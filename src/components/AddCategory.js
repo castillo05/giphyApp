@@ -9,21 +9,41 @@ const AddCategory = ({ setCategories }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (inputValue.trim().length > 2) {
       setCategories((cats) => [inputValue, ...cats]);
       setInputValue("");
     }
   };
+
+  const handleClear = () => {
+    localStorage.clear("categories");
+    setCategories([]);
+  };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="form-control"
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-      </form>
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <form className="row g-3 " onSubmit={handleSubmit}>
+            <input
+              className="form-control"
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Buscar Gif"
+            />
+          </form>
+        </div>
+        <div className="col">
+          <button
+            onClick={handleClear}
+            type="button"
+            className="btn btn-primary"
+          >
+            Limpiar
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

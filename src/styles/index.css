@@ -37,3 +37,11 @@ input {
   max-height: 170px;
   width: 100%;
 }
+.pre-show {
+  height: 400px;
+  width: 25%;
+}
+
+.form {
+  margin: 50px;
+}

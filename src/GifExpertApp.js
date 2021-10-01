@@ -1,23 +1,20 @@
 import React, { useState } from "react";
 import AddCategory from "./components/AddCategory";
 import GifGrid from "./components/GifGrid";
+import useStorage from "./hooks/useStorage";
 
 const GifExpertApp = () => {
   const [categories, setCategories] = useState([]);
-
-  //   const handleAdd = () => {
-  //     //   setCategories([...categories, "Dragon Ball"]);
-  //     setCategories((cats) => [...categories, "Dragon Ball"]);
-  //   };
+  const storage = useStorage(categories);
 
   return (
     <div>
-      <h2>GifExpertApp</h2>
+      <h2>GiphyApi-reactjs</h2>
       <AddCategory setCategories={setCategories}></AddCategory>
       <hr></hr>
 
       <ol>
-        {categories.map((category) => (
+        {storage.map((category) => (
           <GifGrid category={category} key={category}></GifGrid>
         ))}
       </ol>
